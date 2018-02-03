@@ -19,11 +19,19 @@ body {
   vertical-align: middle;
 }
 .big_button {
-  background-color: white;
-  border: 3px solid black;
+  background: #668ad8;
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   height: 100px;
   width: 100px;
   border-radius: 100px;
+}
+.big_button:active {
+  background: #668ad8;
+  color: #FFF;
+  border-bottom: none;
+  box-shadow: none;
 }
 .digits {
   background-color: white;
@@ -40,6 +48,11 @@ body {
   height: 150px;
   width: 50px;
   transform: perspective( 600px ) rotateX( 45deg );
+  transition: transform .5s linear;
+  transform-origin: 50% 0%;
+}
+.arm_switch:hover {
+  transform: perspective( 600px ) rotateX( 75deg );
 }
 .knob {
   background-color: black;
@@ -67,7 +80,6 @@ body {
   line-height: -5px;
 }
 .sm_button {
-  background-color: green;
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -77,10 +89,6 @@ body {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
 .sm_button:active {
-  background-color: green;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
   background: #668ad8;
   color: #FFF;
   border-bottom: none;
