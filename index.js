@@ -1,6 +1,11 @@
 function main() {
   var mainInterval = setInterval(pollSwitches, 1000);
-  window.playerno = 0;
+  window.playerno = getParams();
+}
+
+function getParams() {
+  var query = top.location.search.split("?playerno=")[1];
+  return query;
 }
 
 function pollSwitches() {
@@ -54,7 +59,7 @@ function updateDisplay(json) {
         currentEntity.innerHTML = entity.string;
       break;
       case "undefined_knob":
-        currentEntity.style.transform = "rotate("+entity.amount+"deg)";
+        currentEntity.style.transform = "rotate("+entity.currentSetting+"deg)";
       break;
     }
   }
