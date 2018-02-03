@@ -133,6 +133,7 @@ body {
   text-align: center;
   line-height: 16px;
   filter: brightness(.8);
+  transition: transform .2s linear;
 }
 .undefined_knob .knob_pointer {
   transition: transform .2s linear;
