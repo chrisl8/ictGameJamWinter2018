@@ -20,15 +20,30 @@ function pollSwitches() {
            }
            catch (ex) {
              console.error("invalid websock message recieved");
+             showError();
            }
            if (json != {}) {
              // console.log(json);
              updateDisplay(json.buttonState);
+             hideError();
            }
       }
   };
+  xhttp.onerror = function() {
+    showError();
+  };
   xhttp.open("GET", "http://172.16.212.69:3000/stations", true);
   xhttp.send();
+}
+
+function showError() {
+  document.getElementsByClassName("error")[0].style.display = "block";
+  document.getElementsByClassName("blackout")[0].style.display = "block";
+}
+
+function hideError() {
+  document.getElementsByClassName("error")[0].style.display = "none";
+  document.getElementsByClassName("blackout")[0].style.display = "none";
 }
 
 function updateDisplay(json) {

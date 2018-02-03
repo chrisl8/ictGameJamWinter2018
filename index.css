@@ -8,6 +8,32 @@ body {
   font-family: helvetica;
   background: rgb(60,60,62);
   transform-style: preserve-3d;
+  position: relative;
+}
+.error {
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: rgba(255,0,0,0.5);
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  padding: 30px;
+  z-index: 9999;
+  display: none;
+}
+.blackout {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 999;
+  display: none;
 }
 #title {
   font-size: 35px;
