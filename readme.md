@@ -35,6 +35,6 @@ You can now view a local copy of "Push The Button" at [http://localhost:8080](ht
 
 ## Authors
 
-* **Caleb Banzhaf** - *Initial work Frontend*
 * **Chris Lofland** - *Initial work Backend*
+* **Caleb Banzhaf** - *Initial work Frontend*
 * **Melissa Lofland** - *Initial planning work and design*
