@@ -75,7 +75,7 @@ function updateDisplay(json) {
         currentEntity.innerHTML = entity.string;
       break;
       case "undefined_knob":
-        var angle = (parseInt(entity.currentStatus) * 0.352);
+        var angle = (parseInt(entity.currentStatus) * -0.352);
         currentEntity.style.transform = "rotate("+angle+"deg)";
       break;
     }
