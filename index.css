@@ -14,6 +14,7 @@ body {
   height: auto;
 }
 .entity {
+  user-select: none;
   display: inline-block;
   margin: 10px;
   vertical-align: middle;
@@ -65,6 +66,10 @@ body {
   font-weight: bold;
   text-align: center;
   line-height: 14px;
+  transition: transform .5s linear;
+}
+.knob:hover {
+  transform: rotateZ(180deg);
 }
 .switch {
   background-color: grey;
@@ -78,6 +83,9 @@ body {
   text-align: center;
   padding-left: 2px;
   line-height: -5px;
+}
+.switch:active {
+  line-height: 0px;
 }
 .sm_button {
   height: 50px;
