@@ -1,6 +1,14 @@
 # Push The Button
 
-(product description here)
+Game created for the 2018 Winter ICT Game Jam.
+
+This game is a physical game, in that it is built with an Arduino and lots of buttons and switches.
+You won't really be able to play it without building something.
+
+# Premise
+
+In the Twenty-Fourth and a Halfth Century humanity has expanded across the galaxy. There are many special people with heroic tasks to accomplish. There are also a lot of mundane tasks that we thought robots would be doing by now, but the the robots have better things to do . . . or perhaps you are a robot, that is also a possibility.
+You have one job: push the button . . . buttons . . . and turn the knobs and flip the switches.
 
 ## Getting Started
 
@@ -11,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 In order to run this software locally, you will need to have the following installed:
 
 ```
-1. An HTTP server with PHP and Python support
+1. A copy of node.js
 2. A MODERN web browser (IE and edge, im looking at you)
 ```
 
@@ -24,14 +32,20 @@ $ cd /{somefoldername}/
 $ git clone https://github.com/chrisl8/ictGameJamWinter2018.git
 ```
 
-Then start your web server in the directory you cloned the repo into
+Then initialize the node modules
 
 ```
-$ cd ictGameJamWinter2018
-$ php -S localhost:8080
+$ cd /ictGameJamWinter2018/Station
+$ npm install
 ```
 
-You can now view a local copy of "Push The Button" at [http://localhost:8080](http://localhost:8080)
+Then run the program from inside the Station folder
+
+```
+node index.js
+```
+
+You can now view a local copy of "Push The Button" at [http://localhost:3000](http://localhost:3000)
 
 ## Authors
 
