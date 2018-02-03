@@ -123,6 +123,10 @@ const webServer = app.listen(webPort);
 // with Sockets?
 // const socket = require('socket.io').listen(webServer);
 
+// If no path is given, return files from parent folder (in lieu of what I usually put in 'public')
+// This will allow the web site to run from this process too.
+app.use(express.static(__dirname + '/../'));
+
 app.get('/stations', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(stationList));
