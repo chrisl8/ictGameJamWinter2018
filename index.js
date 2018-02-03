@@ -48,7 +48,7 @@ function updateDisplay(json) {
       case "small_button":
       case "arm_switch":
       case "switch":
-        if (entity.state == "down") {
+        if (entity.currentStatus == "on") {
           currentEntity.classList.add("down");
         }
         else {
