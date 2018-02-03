@@ -1,25 +1,35 @@
-function recieveMessage(msg) {
-  if (msg) {
-    var json = {};
-    try {
-      json = JSON.parse(msg);
-    }
-    catch (ex) {
-      console.error("invalid websock message recieved");
-    }
-    updateDisplay(json)
-  }
-  else {
-    console.error("invalid websock message recieved");
-  }
+function main() {
+  var mainInterval = setInterval(pollSwitches, 100);
+}
+
+function pollSwitches() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         // Typical action to be performed when the document is ready:
+           var json = {};
+           try {
+             json = JSON.parse(xhttp.responseText);
+           }
+           catch (ex) {
+             console.error("invalid websock message recieved");
+           }
+           if (json != {}) {
+             updateDisplay(json);
+             // console.log(json);
+           }
+      }
+  };
+  xhttp.open("GET", "http://172.16.212.69:3000/stations", true);
+  xhttp.send();
 }
 
 function updateDisplay(json) {
   for (var i = 0; i < json.entities.length; i++) {
     var entity = json.entities[i];
+    var entityCollection = document.getElementsByClassName(entity.type);
+    var currentEntity = entityCollection[entity.index];
     switch (entity.type) {
-      var entityCollection = document.getElementsByClassName(entity.type);
-      var currentEntity = entityCollection[entity.index];
       case "big_button":
       case "sm_button":
       case "arm_switch":
@@ -40,3 +50,4 @@ function updateDisplay(json) {
     }
   }
 }
+main();
