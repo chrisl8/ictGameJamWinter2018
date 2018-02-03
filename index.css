@@ -7,6 +7,7 @@ body {
   padding: 0;
   font-family: helvetica;
   background-color: rgb(240,240,240);
+  transform-style: preserve-3d;
 }
 .row {
   width: 100%;
@@ -38,6 +39,7 @@ body {
   background-color: green;
   height: 150px;
   width: 50px;
+  transform: perspective( 600px ) rotateX( 45deg );
 }
 .knob {
   background-color: black;
