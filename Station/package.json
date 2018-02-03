@@ -1,0 +1,7 @@
+{
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "johnny-five": "^0.13.0"
+  }
+}
