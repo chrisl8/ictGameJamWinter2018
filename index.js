@@ -21,7 +21,7 @@ function pollSwitches() {
              console.error("invalid websock message recieved");
            }
            if (json != {}) {
-             console.log(json);
+             // console.log(json);
              updateDisplay(json);
            }
       }
@@ -42,13 +42,14 @@ function updateDisplay(json) {
       index--;
     }
     var currentEntity = entityCollection[index];
-    console.log(entity.subType + "_" + entity.type,currentEntity,index);
-    switch (entity.type) {
+    switch (entity.subType + "_" + entity.type) {
       case "big_button":
       case "small_button":
       case "arm_switch":
-      case "switch":
+      case "small_switch":
+        console.log(entity.currentStatus);
         if (entity.currentStatus == "on") {
+          console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
           currentEntity.classList.add("down");
         }
         else {
