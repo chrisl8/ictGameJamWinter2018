@@ -1,10 +1,11 @@
 function main() {
   var mainInterval = setInterval(pollSwitches, 500);
   window.playerno = getParams();
+  document.getElementById("title").innerHTML = "Station #" + (window.playerno+1);
 }
 
 function getParams() {
-  var query = top.location.search.split("?playerno=")[1];
+  var query = parseInt(top.location.search.split("?playerno=")[1]);
   return query;
 }
 
@@ -85,4 +86,5 @@ function updateDisplay(json) {
     }
   }
 }
-main();
+//wait to load
+setTimeout(main,100);

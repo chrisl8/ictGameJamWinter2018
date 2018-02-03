@@ -9,6 +9,19 @@ body {
   background: rgb(60,60,62);
   transform-style: preserve-3d;
 }
+#title {
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  margin: 30px;
+}
+.container {
+  width: 650px;
+  position: absolute;
+  left:0;
+  right:0;
+  margin: auto;
+}
 .row {
   width: 100%;
   height: auto;
@@ -26,6 +39,7 @@ body {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   height: 100px;
   width: 100px;
+  margin-left: 45px;
   border-radius: 100px;
 }
 .big_button.down {
@@ -40,6 +54,7 @@ body {
   border: 3px solid black;
   height: 100px;
   width: 250px;
+  margin-left: 60px;
   font-size: 90px;
   line-height: 110px;
   text-align: center;
@@ -52,6 +67,7 @@ body {
   z-index: 0;
   border: 1px solid white;
   padding-right: 20px;
+  margin-left: 60px;
 }
 .arm_switch_cover {
   position: relative;
@@ -70,7 +86,9 @@ body {
 .arm_switch .switch {
   position: absolute;
   top:-30px;
-  left: -20px;
+  left: -21px;
+  margin-top: 0;
+  margin-bottom: 0;
   transform: scale(.3);
   z-index: 1;
 }
@@ -78,19 +96,46 @@ body {
   line-height: 0px;
 }
 .undefined_knob {
-  background-color: black;
-  border: 5px solid grey;
-  height: 30px;
-  width: 30px;
+  position: relative;
+  background-color: rgb(125,125,125);
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
   border-radius: 50px;
-  color: red;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   line-height: 14px;
-  transition: transform .2s linear;
+  filter: brightness(.8);
 }
-.undefined_knob:hover {
+.undefined_knob .knob_pointer {
+  transition: transform .2s linear;
+  position: absolute;
+  top: 1px;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  left:5px;
+  color: red;
+  background-color: #555;
+	background-image: -webkit-gradient(linear, left top, right top, from(#5F5F5F), to(#878787));
+	background-image: -webkit-linear-gradient(left, #5F5F5F, #878787);
+	background-image: -moz-linear-gradient(left, #5F5F5F, #878787);
+	background-image: -ms-linear-gradient(left, #5F5F5F, #878787);
+	background-image: -o-linear-gradient(left, #5F5F5F, #878787);
+	background-image: linear-gradient(to right, #5F5F5F, #878787);
+}
+.undefined_knob::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  left: 5px;
+  border-bottom: 7px solid #5F5F5F;
+}
+.undefined_knob:hover .knob_pointer {
   transform: rotateZ(180deg);
 }
 .small_button {
@@ -114,11 +159,13 @@ body {
 .switch {
 	display: inline-block;
 	position: relative;
+  margin-top: -50px;
+  margin-bottom: -50px;
 	border-radius: 3.5em;
 	-webkit-box-shadow: 0 0 0.5em rgba(255,255,255,0.2);
 	-moz-box-shadow: 0 0 0.5em rgba(255,255,255,0.2);
 	box-shadow: 0 0 0.5em rgba(255,255,255,0.2);
-  transform: scale(.5);
+  transform: scale(.3);
   pointer-events: none;
 }
 
