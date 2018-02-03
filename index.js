@@ -15,7 +15,8 @@ function recieveMessage(msg) {
 }
 
 function updateDisplay(json) {
-  for (var i = 0; i < json; i++) {
+  for (var i = 0; i < json.entities.length; i++) {
+    var entity = json.entities[i];
     switch (entity.type) {
       var entityCollection = document.getElementsByClassName(entity.type);
       var currentEntity = entityCollection[entity.index];
