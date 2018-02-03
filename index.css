@@ -62,25 +62,16 @@ body {
   transition: transform .5s linear;
   transform-origin: 50% 0%;
   z-index: 2;
+  opacity: .8;
 }
 .arm_switch.down .arm_switch_cover {
-  transform: perspective( 600px ) rotateX( 75deg );
+  transform: perspective( 600px ) rotateX( 80deg );
 }
-.arm_switch .arm_small_switch {
-  background-color: grey;
-  border: 5px solid black;
-  height: 25px;
-  width: 25px;
+.arm_switch .switch {
   position: absolute;
-  top: 50%;
-  left: 7px;
-  border-radius: 50px;
-  color: black;
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
-  padding-left: 2px;
-  line-height: unset;
+  top:-30px;
+  left: -20px;
+  transform: scale(.3);
   z-index: 1;
 }
 .arm_switch.down .arm_small_switch {
