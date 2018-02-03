@@ -119,6 +119,27 @@ addALineLeft();
 addALineRight();
 
 const app = express();
+
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
 const webServer = app.listen(webPort);
 // with Sockets?
 // const socket = require('socket.io').listen(webServer);
@@ -131,3 +152,70 @@ app.get('/stations', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(stationList));
 });
+
+
+// Johnny Five section
+// TODO: Set up all Johnny Five devices and set them to update the stationList objects.
+const board = new five.Board();
+
+// http://johnny-five.io/api/button/
+
+const johnnyFiveObjects = {};
+
+board.on("ready", function () {
+
+    for (let i = 0; i < stationList.length; i++) {
+        stationList[i].forEach(input => {
+            if (['switch', 'button'].indexOf(input.type) !== -1) {
+                johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`] = new five.Button({
+                    pin: input.pin,
+                    isPullup: true
+                });
+                johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("press", () => {
+                    input.hasBeenPressed = true;
+                    input.currentStatus = 'on';
+                });
+                johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("hold", () => {
+                    input.currentStatus = 'on';
+                });
+                johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("release", () => {
+                    input.currentStatus = 'off';
+                });
+            }
+            console.log(`Station ${i} input ${input.id} is ${input.label}.`);
+        })
+    }
+
+});
+
+const gameState = {
+    atGameIntro: true,
+    gameStarted: false,
+    gameOver: false,
+};
+
+// TODO: If we are at the intro, don't start until both switches are armed.
+// IF somebody disarms a switch, pause the game until it is armed again, then resume.
+
+function primaryGameLoop() {
+
+    if (gameState.atGameIntro) {
+
+    }
+
+    // Are we at the intro or in the game?
+
+    // Is the game over?
+
+    // Are we waiting for input?
+
+    // Is the input good?
+
+    // Update score.
+
+    // Update digits "timer" "clock"
+
+    setTimeout(primaryGameLoop, 10);
+}
+
+primaryGameLoop();

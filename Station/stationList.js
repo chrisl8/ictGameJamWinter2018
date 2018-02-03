@@ -3,7 +3,9 @@ const stationList = [];
 stationList.push([
     {
         id: 1,
+        pin: 33,
         type: "switch",
+        subType: "arm",
         label: "Arm",
         description: "Big toggle switch with cover",
         currentStatus: null,
@@ -11,7 +13,9 @@ stationList.push([
     },
     {
         id: 2,
+        pin: 32,
         type: "button",
+        subType: "big",
         label: "Big Button",
         description: "Large round button",
         currentStatus: null,
@@ -19,6 +23,7 @@ stationList.push([
     },
     {
         id: 3,
+        pin: 'A0',
         type: "knob",
         label: "Red Knob",
         description: "Red knob",
@@ -29,6 +34,7 @@ stationList.push([
     },
     {
         id: 4,
+        pin: 'A2',
         type: "knob",
         label: "Blue Knob",
         description: "Blue knob",
@@ -39,6 +45,7 @@ stationList.push([
     },
     {
         id: 5,
+        pin: 'A3',
         type: "knob",
         label: "White Knob",
         description: "White knob",
@@ -49,7 +56,9 @@ stationList.push([
     },
     {
         id: 6,
+        pin: 27,
         type: "switch",
+        subType: "small",
         label: "Switch 1",
         description: "Far Left Switch",
         currentStatus: null,
@@ -57,7 +66,9 @@ stationList.push([
     },
     {
         id: 7,
+        pin: 28,
         type: "switch",
+        subType: "small",
         label: "Switch 2",
         description: "Second Switch From the Left",
         currentStatus: null,
@@ -65,7 +76,9 @@ stationList.push([
     },
     {
         id: 8,
+        pin: 29,
         type: "switch",
+        subType: "small",
         label: "Switch 3",
         description: "Middle Switch",
         currentStatus: null,
@@ -73,7 +86,9 @@ stationList.push([
     },
     {
         id: 9,
+        pin: 30,
         type: "switch",
+        subType: "small",
         label: "Switch 4",
         description: "Second Switch from the Right",
         currentStatus: null,
@@ -81,7 +96,9 @@ stationList.push([
     },
     {
         id: 10,
+        pin: 31,
         type: "switch",
+        subType: "small",
         label: "Switch 5",
         description: "Far Right Switch",
         currentStatus: null,
@@ -89,7 +106,9 @@ stationList.push([
     },
     {
         id: 11,
+        pin: 22,
         type: "button",
+        subType: "small",
         label: "Button 1",
         description: "Far Left Small Button",
         currentStatus: null,
@@ -97,7 +116,9 @@ stationList.push([
     },
     {
         id: 12,
+        pin: 23,
         type: "button",
+        subType: "small",
         label: "Switch 2",
         description: "Second Small Button From the Left",
         currentStatus: null,
@@ -105,7 +126,9 @@ stationList.push([
     },
     {
         id: 13,
+        pin: 24,
         type: "button",
+        subType: "small",
         label: "Button 3",
         description: "Middle Small Button",
         currentStatus: null,
@@ -113,7 +136,9 @@ stationList.push([
     },
     {
         id: 14,
+        pin: 25,
         type: "button",
+        subType: "small",
         label: "Button 4",
         description: "Second Small Button from the Right",
         currentStatus: null,
@@ -121,7 +146,9 @@ stationList.push([
     },
     {
         id: 15,
+        pin: 26,
         type: "button",
+        subType: "small",
         label: "Button 5",
         description: "Far Right Small Button",
         currentStatus: null,
@@ -132,7 +159,9 @@ stationList.push([
 stationList.push([
     {
         id: 1,
+        pin: 2,
         type: "switch",
+        subType: "arm",
         label: "Arm",
         description: "Big toggle switch with cover",
         currentStatus: null,
@@ -140,7 +169,9 @@ stationList.push([
     },
     {
         id: 2,
+        pin: 3,
         type: "button",
+        subType: "big",
         label: "Big Button",
         description: "Large round button",
         currentStatus: null,
@@ -148,6 +179,7 @@ stationList.push([
     },
     {
         id: 3,
+        pin: 10,
         type: "knob",
         label: "Red Knob",
         description: "Red knob",
@@ -158,6 +190,7 @@ stationList.push([
     },
     {
         id: 4,
+        pin: 10,
         type: "knob",
         label: "Blue Knob",
         description: "Blue knob",
@@ -168,6 +201,7 @@ stationList.push([
     },
     {
         id: 5,
+        pin: 10,
         type: "knob",
         label: "White Knob",
         description: "White knob",
@@ -178,7 +212,9 @@ stationList.push([
     },
     {
         id: 6,
+        pin: 4,
         type: "switch",
+        subType: "small",
         label: "Switch 1",
         description: "Far Left Switch",
         currentStatus: null,
@@ -186,7 +222,9 @@ stationList.push([
     },
     {
         id: 7,
+        pin: 5,
         type: "switch",
+        subType: "small",
         label: "Switch 2",
         description: "Second Switch From the Left",
         currentStatus: null,
@@ -194,7 +232,9 @@ stationList.push([
     },
     {
         id: 8,
+        pin: 6,
         type: "switch",
+        subType: "small",
         label: "Switch 3",
         description: "Middle Switch",
         currentStatus: null,
@@ -202,7 +242,9 @@ stationList.push([
     },
     {
         id: 9,
+        pin: 7,
         type: "switch",
+        subType: "small",
         label: "Switch 4",
         description: "Second Switch from the Right",
         currentStatus: null,
@@ -210,7 +252,9 @@ stationList.push([
     },
     {
         id: 10,
+        pin: 8,
         type: "switch",
+        subType: "small",
         label: "Switch 5",
         description: "Far Right Switch",
         currentStatus: null,
@@ -218,7 +262,9 @@ stationList.push([
     },
     {
         id: 11,
+        pin: 9,
         type: "button",
+        subType: "small",
         label: "Button 1",
         description: "Far Left Small Button",
         currentStatus: null,
@@ -226,7 +272,9 @@ stationList.push([
     },
     {
         id: 12,
+        pin: 10,
         type: "button",
+        subType: "small",
         label: "Switch 2",
         description: "Second Small Button From the Left",
         currentStatus: null,
@@ -234,7 +282,9 @@ stationList.push([
     },
     {
         id: 13,
+        pin: 11,
         type: "button",
+        subType: "small",
         label: "Button 3",
         description: "Middle Small Button",
         currentStatus: null,
@@ -242,7 +292,9 @@ stationList.push([
     },
     {
         id: 14,
+        pin: 12,
         type: "button",
+        subType: "small",
         label: "Button 4",
         description: "Second Small Button from the Right",
         currentStatus: null,
@@ -250,7 +302,9 @@ stationList.push([
     },
     {
         id: 15,
+        pin: 52,
         type: "button",
+        subType: "small",
         label: "Button 5",
         description: "Far Right Small Button",
         currentStatus: null,

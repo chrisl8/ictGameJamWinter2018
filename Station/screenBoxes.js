@@ -29,7 +29,7 @@ const screenBoxes = {
         top: '10%',
         left: '0',
         width: '100%',
-        height: '80%',
+        height: '75%',
         // content: 'Hello {bold}world{/bold}!',
         tags: true,
         border: {
@@ -48,16 +48,16 @@ const screenBoxes = {
     }),
 
     waitingToArm1box: blessed.box({
-        top: '90%',
+        top: '85%',
         left: '0',
         width: '50%',
-        height: '10%',
+        height: '15%',
         // content: 'Hello {bold}world{/bold}!',
         tags: true,
         valign: "center",
-        border: {
-            type: 'line'
-        },
+        // border: {
+        //     type: 'line'
+        // },
         style: {
             fg: 'white',
             bg: 'magenta',
@@ -71,16 +71,16 @@ const screenBoxes = {
     }),
 
     waitingToArm2box: blessed.box({
-        top: '90%',
+        top: '85%',
         left: '50%',
         width: '50%',
-        height: '10%',
+        height: '15%',
         // content: 'Hello {bold}world{/bold}!',
         tags: true,
         valign: "center",
-        border: {
-            type: 'line'
-        },
+        // border: {
+        //     type: 'line'
+        // },
         style: {
             fg: 'white',
             bg: 'magenta',
