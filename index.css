@@ -28,7 +28,7 @@ body {
   width: 100px;
   border-radius: 100px;
 }
-.big_button:active {
+.big_button.down {
   background: #668ad8;
   color: #FFF;
   border-bottom: none;
@@ -52,10 +52,10 @@ body {
   transition: transform .5s linear;
   transform-origin: 50% 0%;
 }
-.arm_switch:hover {
+.arm_switch.down {
   transform: perspective( 600px ) rotateX( 75deg );
 }
-.knob {
+.undefined_knob {
   background-color: black;
   border: 5px solid grey;
   height: 50px;
@@ -68,10 +68,10 @@ body {
   line-height: 14px;
   transition: transform .5s linear;
 }
-.knob:hover {
+.undefined_knob:hover {
   transform: rotateZ(180deg);
 }
-.switch {
+.small_switch {
   background-color: grey;
   border: 5px solid black;
   height: 25px;
@@ -84,10 +84,10 @@ body {
   padding-left: 2px;
   line-height: -5px;
 }
-.switch:active {
+.small_switch.down {
   line-height: 0px;
 }
-.sm_button {
+.small_button {
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -96,7 +96,7 @@ body {
   border-bottom: solid 8px #627295;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
-.sm_button:active {
+.small_button.down {
   background: #668ad8;
   color: #FFF;
   border-bottom: none;
