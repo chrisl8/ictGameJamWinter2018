@@ -1,5 +1,8 @@
+const webPort = 3000;
+
 const five = require("johnny-five");
 const blessed = require('blessed');
+const express = require('express');
 
 const stationList = require('./stationList');
 
@@ -114,3 +117,13 @@ const addALineRight = function () {
 
 addALineLeft();
 addALineRight();
+
+const app = express();
+const webServer = app.listen(webPort);
+// with Sockets?
+// const socket = require('socket.io').listen(webServer);
+
+app.get('/stations', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(stationList));
+});
