@@ -46,7 +46,6 @@ function updateDisplay(json) {
       case "big_button":
       case "small_button":
       case "arm_switch":
-      case "small_switch":
         console.log(entity.currentStatus);
         if (entity.currentStatus == "on") {
           console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
@@ -54,6 +53,16 @@ function updateDisplay(json) {
         }
         else {
           currentEntity.classList.remove("down");
+        }
+      break;
+      case "small_switch":
+        console.log(entity.currentStatus);
+        if (entity.currentStatus == "on") {
+          console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
+          currentEntity.checked = true;
+        }
+        else {
+          currentEntity.checked = false;
         }
       break;
       case "digits":
