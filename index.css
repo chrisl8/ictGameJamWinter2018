@@ -49,6 +49,8 @@ body {
   width: 50px;
   position: relative;
   z-index: 0;
+  border: 1px solid black;
+  padding-right: 20px;
 }
 .arm_switch_cover {
   position: relative;
@@ -77,11 +79,11 @@ body {
   font-weight: bold;
   text-align: center;
   padding-left: 2px;
-  line-height: 0px;
+  line-height: unset;
   z-index: 1;
 }
-.arm_switch.down .arm_small_switch.down {
-  line-height: -5px;
+.arm_switch.down .arm_small_switch {
+  line-height: 0px;
 }
 .undefined_knob {
   background-color: black;
@@ -110,10 +112,10 @@ body {
   font-weight: bold;
   text-align: center;
   padding-left: 2px;
-  line-height: 0px;
+  line-height: -5px;
 }
 .small_switch.down {
-  line-height: -5px;
+  line-height: 0px;
 }
 .small_button {
   height: 50px;
