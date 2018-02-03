@@ -111,7 +111,8 @@ body {
   font-size: 50px;
   font-weight: bold;
   text-align: center;
-  padding-left: 2px;
+  padding-left: 1px;
+  margin: 17px;
   line-height: -5px;
 }
 .small_switch.down {

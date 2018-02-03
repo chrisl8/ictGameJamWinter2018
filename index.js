@@ -1,5 +1,5 @@
 function main() {
-  var mainInterval = setInterval(pollSwitches, 1000);
+  var mainInterval = setInterval(pollSwitches, 500);
   window.playerno = getParams();
 }
 
