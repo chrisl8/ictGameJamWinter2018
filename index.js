@@ -46,9 +46,7 @@ function updateDisplay(json) {
     switch (entity.subType + "_" + entity.type) {
       case "big_button":
       case "small_button":
-        console.log(entity.currentStatus);
         if (entity.currentStatus == "on") {
-          console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
           currentEntity.classList.add("down");
         }
         else {
@@ -56,9 +54,7 @@ function updateDisplay(json) {
         }
       break;
       case "arm_switch":
-        console.log(entity.currentStatus);
         if (entity.currentStatus == "on") {
-          console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
           currentEntity.getElementsByClassName("arm_small_switch")[0].checked = true;
           currentEntity.classList.add("down");
         }
@@ -68,9 +64,7 @@ function updateDisplay(json) {
         }
       break;
       case "small_switch":
-        console.log(entity.currentStatus);
         if (entity.currentStatus == "on") {
-          console.log(entity.subType + "_" + entity.type,currentEntity,index, entity.currentStatus);
           currentEntity.checked = true;
         }
         else {
@@ -81,7 +75,7 @@ function updateDisplay(json) {
         currentEntity.innerHTML = entity.string;
       break;
       case "undefined_knob":
-        var angle = parseInt(entity.currentStatus) * 0.352;
+        var angle = (parseInt(entity.currentStatus) * 0.352);
         currentEntity.style.transform = "rotate("+angle+"deg)";
       break;
     }
