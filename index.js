@@ -23,7 +23,7 @@ function pollSwitches() {
            }
            if (json != {}) {
              // console.log(json);
-             updateDisplay(json);
+             updateDisplay(json.buttonState);
            }
       }
   };
@@ -81,7 +81,8 @@ function updateDisplay(json) {
         currentEntity.innerHTML = entity.string;
       break;
       case "undefined_knob":
-        currentEntity.style.transform = "rotate("+entity.currentSetting+"deg)";
+        var angle = parseInt(entity.currentStatus) * 0.352;
+        currentEntity.style.transform = "rotate("+angle+"deg)";
       break;
     }
   }
