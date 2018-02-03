@@ -39,10 +39,11 @@ $ cd /ictGameJamWinter2018/Station
 $ npm install
 ```
 
-Then run the program from inside the Station folder
+### Run the program
+Then run the `startGame.sh` script from the root of the repo. 
 
 ```
-node index.js
+$ ./startGame.sh
 ```
 
 You can now view a local copy of "Push The Button" at [http://localhost:3000](http://localhost:3000)
