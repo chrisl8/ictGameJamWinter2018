@@ -338,7 +338,12 @@ function primaryGameLoop() {
                 gameState.score++;
                 gameState.waitingForInput = false;
                 gameState.timeElapsed = 0;
-                if (gameState.maxTime > 2) {
+                // MINIMUM TIME HERE:
+                if (gameState.score > 5 && gameState.maxTime > 4) {
+                    gameState.maxTime--;
+                } else if (gameState.score > 10 && gameState.maxTime > 3) {
+                    gameState.maxTime--;
+                } else if (gameState.score > 20 && gameState.maxTime > 2) {
                     gameState.maxTime--;
                 }
             } else {
@@ -379,9 +384,12 @@ function primaryGameLoop() {
 
             for (let i = 0; i < 2; i++) {
                 let nextInstruction = 'nextInstructionForSide1';
-                let knobDirection = getRandVector();
                 if (i === 1) {
                     nextInstruction = 'nextInstructionForSide2';
+                }
+                let knobDirection = getRandVector();
+                while (knobDirection === getRange(stationList[i][gameState[nextInstruction]].currentStatus)) {
+                    knobDirection = getRandVector();
                 }
                 let displayName;
                 if (stationList[i][gameState[nextInstruction]].type === "button") {
