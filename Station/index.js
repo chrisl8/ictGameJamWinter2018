@@ -1,8 +1,10 @@
+"use strict";
 const webPort = 3000;
 
 const five = require("johnny-five");
 const blessed = require('blessed');
 const express = require('express');
+const {spawn} = require('child_process');
 
 const stationList = require('./stationList');
 
@@ -128,7 +130,17 @@ board.on("ready", function () {
                 johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("press", () => {
                     input.hasBeenPressed = true;
                     input.currentStatus = 'on';
-                    // console.log(input);
+                    let soundName = '1';
+                    if (input.correct) {
+                        soundName = '328120__kianda__powerup';
+                        if (input.subType === 'big') {
+                            soundName = 'theOneButton';
+                        }
+                    }
+                    if (input.subType === 'arm') {
+                        soundName = '369867__samsterbirdies__radio-beep';
+                    }
+                    spawn("aplay", [`sounds/${soundName}.wav`]);
                 });
                 johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("hold", () => {
                     input.currentStatus = 'on';
@@ -136,6 +148,13 @@ board.on("ready", function () {
                 johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`].on("release", () => {
                     input.hasBeenPressed = true;
                     input.currentStatus = 'off';
+                    if (input.type === 'switch') {
+                        let soundName = '4';
+                        if (input.correct) {
+                            soundName = '328120__kianda__powerup';
+                        }
+                        spawn("aplay", [`sounds/${soundName}.wav`]);
+                    }
                 });
             } else if (input.type === "knob") {
                 johnnyFiveObjects[`${i}-${input.type}-${input.subType}-${input.id}`] = new five.Sensor({
@@ -205,7 +224,7 @@ function getRandVector() {
 }
 
 function pad(num, size) {
-    var s = num+"";
+    var s = num + "";
     while (s.length < size) s = "0" + s;
     return s;
 }
@@ -297,14 +316,19 @@ function primaryGameLoop() {
         } else if (gameState.waitingForInput) {
             let done = true;
             if (stationList[0][gameState.nextInstructionForSide1].hasBeenPressed && stationList[1][gameState.nextInstructionForSide2].hasBeenPressed) {
+                let soundName = '328120__kianda__powerup';
                 if (stationList[0][gameState.nextInstructionForSide1].type === "knob") {
                     if (getRange(stationList[0][gameState.nextInstructionForSide1].currentStatus) !== gameState.requiredKnobPosition1) {
                         done = false;
+                    } else {
+                        spawn("aplay", [`sounds/${soundName}.wav`]);
                     }
                 }
                 if (stationList[1][gameState.nextInstructionForSide2].type === "knob") {
                     if (getRange(stationList[1][gameState.nextInstructionForSide2].currentStatus) !== gameState.requiredKnobPosition2) {
                         done = false;
+                    } else {
+                        spawn("aplay", [`sounds/${soundName}.wav`]);
                     }
                 }
             } else {
@@ -331,6 +355,7 @@ function primaryGameLoop() {
             for (let i = 0; i < stationList.length; i++) {
                 stationList[i].forEach(button => {
                     button.hasBeenPressed = false;
+                    button.correct = false;
                 })
             }
 
@@ -348,7 +373,9 @@ function primaryGameLoop() {
             gameState.lastThreeInputs[2] = gameState.nextInstructionForSide2;
 
             let displayNameForStation1 = stationList[0][gameState.nextInstructionForSide1].label;
+            stationList[0][gameState.nextInstructionForSide1].correct = true;
             let displayNameForStation2 = stationList[1][gameState.nextInstructionForSide2].label;
+            stationList[1][gameState.nextInstructionForSide2].correct = true;
 
             for (let i = 0; i < 2; i++) {
                 let nextInstruction = 'nextInstructionForSide1';

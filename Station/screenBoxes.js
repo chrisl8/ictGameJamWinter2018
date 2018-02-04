@@ -1,3 +1,4 @@
+"use strict";
 const blessed = require('blessed');
 
 const screenBoxes = {
@@ -15,7 +16,7 @@ const screenBoxes = {
         // },
         style: {
             fg: 'white',
-            bg: 'blue',
+            bg: 'blue'
             // border: {
             //     fg: '#f0f0f0'
             // },
