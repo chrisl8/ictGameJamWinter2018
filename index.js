@@ -25,6 +25,7 @@ function pollSwitches() {
            if (json != {}) {
              // console.log(json);
              updateDisplay(json.buttonState);
+             updateTime(json.timeRemaining);
              hideError();
            }
       }
@@ -44,6 +45,10 @@ function showError() {
 function hideError() {
   document.getElementsByClassName("error")[0].style.display = "none";
   document.getElementsByClassName("blackout")[0].style.display = "none";
+}
+
+function updateTime(time) {
+  document.getElementsByClassName("digits")[0].innerHTML = time;
 }
 
 function updateDisplay(json) {
@@ -85,9 +90,6 @@ function updateDisplay(json) {
         else {
           currentEntity.checked = false;
         }
-      break;
-      case "digits":
-        currentEntity.innerHTML = entity.string;
       break;
       case "undefined_knob":
         var angle = (parseInt(entity.currentStatus) * -0.352);
