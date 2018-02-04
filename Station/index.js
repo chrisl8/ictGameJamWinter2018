@@ -27,8 +27,6 @@ screen.append(screenBoxes.introductionBox);
 
 screenBoxes.introductionBox.setContent("{center}Booting Universe, please stand by . . .");
 
-let readyToPlay = false;
-
 // Quit on Escape, q, or Control-C.
 screen.key(['escape', 'q', 'C-c'], function (ch, key) {
     return process.exit(0);
@@ -72,6 +70,7 @@ app.get('/stations', (req, res) => {
     const dataToSend = {
         buttonState: stationList,
         score: gameState.score,
+        timeRemaining: (gameState.maxTime * (1000 / loopTime)) - gameState.timeElapsed,
     };
     res.send(JSON.stringify(dataToSend));
 });
@@ -103,9 +102,17 @@ const gameState = {
     timeElapsed: 0,
     initialTIme: 10,
     maxTime: 10,
+    clockUpdate: 0,
 };
 
 board.on("ready", function () {
+
+    johnnyFiveObjects.digitalReadout2 = new five.Led.Digits({
+        controller: "HT16K33",
+    });
+    johnnyFiveObjects.digitalReadout1 = new five.Led.Digits({
+        controller: "HT16K33",
+    });
 
     for (let i = 0; i < stationList.length; i++) {
         stationList[i].forEach(input => {
@@ -197,9 +204,27 @@ function getRandVector() {
     return possibleVectors[rand];
 }
 
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function updateDigitalReadout() {
+    if (gameState.clockUpdate > 5) {
+        const output = pad((gameState.maxTime * (1000 / loopTime)) - gameState.timeElapsed, 4);
+        johnnyFiveObjects.digitalReadout1.print(output);
+        johnnyFiveObjects.digitalReadout2.print(output);
+        gameState.clockUpdate = 0;
+    } else {
+        gameState.clockUpdate++;
+    }
+}
+
 function primaryGameLoop() {
     if (gameState.boardInitiated) {
         if (gameState.atGameIntro) {
+            updateDigitalReadout();
             screen.append(screenBoxes.introductionBox);
             screenBoxes.introductionBox.setContent("In the Twenty-Fourth and a Halfth Century humanity has expanded across the galaxy. There are many special people with heroic tasks to accomplish. There are also a lot of mundane tasks that we thought robots would be doing by now, but the the robots have better things to do . . . or perhaps you are a robot, that is also a possibility.\n" +
                 "You have one job: push the button . . . buttons . . . and turn the knobs and flip the switches.\n\n" +
@@ -266,6 +291,8 @@ function primaryGameLoop() {
             screen.remove(screenBoxes.leftBottomBox);
             screen.remove(screenBoxes.rightBottomBox);
             screen.render();
+            johnnyFiveObjects.digitalReadout1.print('0000');
+            johnnyFiveObjects.digitalReadout2.print('0000');
             gameState.gameOver = true;
         } else if (gameState.waitingForInput) {
             let done = true;
@@ -294,6 +321,7 @@ function primaryGameLoop() {
                 gameState.timeElapsed++;
             }
             screen.append(screenBoxes.leftBottomBox);
+            updateDigitalReadout();
             screenBoxes.leftBottomBox.setContent(`Time Left: ${(gameState.maxTime * (1000 / loopTime)) - gameState.timeElapsed}`);
             screen.append(screenBoxes.rightBottomBox);
             screenBoxes.rightBottomBox.setContent(`SCORE: ${gameState.score}`);
@@ -348,7 +376,7 @@ function primaryGameLoop() {
                     gameState.requiredKnobPosition2 = knobDirection;
                 }
             }
-            screenBoxes.commandBox.setContent(`${displayNameForStation1}\n
+            screenBoxes.commandBox.setContent(`\n${displayNameForStation1}\n
             \n
             and
             \n
