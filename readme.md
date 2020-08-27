@@ -2,8 +2,15 @@
 
 Game created for the 2018 Winter ICT Game Jam.
 
-This game is a physical game, in that it is built with an Arduino and lots of buttons and switches.
+This game was a physical game, in that it was built with an Arduino and lots of buttons and switches.
 You won't really be able to play it without building something.
+
+![Alt text](2018-02-04_12.04.27.jpg "Picture of the Game")
+
+# Archive
+
+This is an Archive repository, left in the exact state that we turned in our submission for the game jam. It will not be updated.
+The currently maintained version is called Panic Stations, which you can see here: https://github.com/chrisl8/PanicStations
 
 # Premise
 
